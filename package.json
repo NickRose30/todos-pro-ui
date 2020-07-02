@@ -1,0 +1,39 @@
+{
+  "name": "todos-pro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint ./ --fix",
+    "web": "yarn workspace web start",
+    "web:clean": "yarn workspace web clean",
+    "web:build": "yarn workspace web build",
+    "native": "yarn workspace native start",
+    "native:ios": "yarn workspace native ios",
+    "native:android": "yarn workspace native android"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "workspaces": [
+    "packages/*"
+  ],
+  "private": true,
+  "dependencies": {
+    "@todos-pro/common": "1.0.0",
+    "react": "~16.9.0",
+    "react-dom": "~16.9.0",
+    "styled-components": "^5.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.3.1",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^4.0.4",
+    "prettier": "^2.0.5"
+  }
+}
