@@ -21,6 +21,7 @@
   "private": true,
   "dependencies": {
     "@todos-pro/common": "1.0.0",
+    "ramda": "^0.27.0",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
     "styled-components": "^5.1.1"

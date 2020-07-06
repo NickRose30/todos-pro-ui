@@ -26,9 +26,11 @@ module.exports = {
     'import/prefer-default-export': 0,
     'implicit-arrow-linebreak': 0,
     'react/jsx-curly-newline': 0,
-    'react/prop-types': 1,
+    'react/prop-types': 0,
     'react/jsx-fragments': 0,
     'react/jsx-props-no-spreading': 0,
     'react/no-array-index-key': 0,
+    'comma-dangle': 0,
+    'no-confusing-arrow': 0,
   },
 };
