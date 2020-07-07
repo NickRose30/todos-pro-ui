@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/native';
-import { defaultDarkGreyColor } from '../../constants/theme';
 import { Text } from '../common';
 
 const HeaderContainer = styled.View`
   width: 100%;
   align-items: center;
+  margin-bottom: 20px;
 `;
 
 const TitleContainer = styled.View`
@@ -14,15 +14,18 @@ const TitleContainer = styled.View`
 `;
 
 const Title = styled(Text)`
-  color: ${defaultDarkGreyColor};
   font-size: 56px;
 `;
 
 const SubTitle = styled(Text)`
-  color: ${defaultDarkGreyColor};
   font-size: 16px;
   margin-bottom: 3px;
   text-transform: uppercase;
+`;
+
+const PageName = styled(Text)`
+  font-size: 24px;
+  margin-top: 24px;
 `;
 
 const InputField = styled.TextInput`
@@ -33,7 +36,7 @@ const InputField = styled.TextInput`
   ${({ center }) => center && 'text-align: center;'}
 `;
 
-const WorkspaceHeader = _ => {
+const WorkspaceHeader = ({ pageName }) => {
   const [textInput, setTextInput] = useState('');
 
   return (
@@ -48,6 +51,7 @@ const WorkspaceHeader = _ => {
         placeholder="Add a new to-do"
         center={textInput === ''}
       />
+      <PageName>{pageName}</PageName>
     </HeaderContainer>
   );
 };

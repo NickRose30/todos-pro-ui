@@ -4,7 +4,6 @@ import styled from 'styled-components/native';
 import {
   defaultGreyColor,
   activeGreyColor,
-  defaultDarkGreyColor,
   whiteColor,
 } from '../../constants/theme';
 import { Text } from '../common';
@@ -19,13 +18,11 @@ const Tab = styled.TouchableOpacity`
   flex: 1;
   background-color: ${({ active }) =>
     active ? defaultGreyColor : activeGreyColor};
-  align-items: center;
   flex-direction: row;
 `;
 
 const TabLabel = styled(Text)`
-  color: ${({ active }) =>
-    active ? defaultDarkGreyColor : whiteColor};
+  ${({ active }) => !active && `color: ${whiteColor};`};
   margin: auto;
 `;
 
