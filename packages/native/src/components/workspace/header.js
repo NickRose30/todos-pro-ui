@@ -1,13 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components/native';
 import { defaultDarkGreyColor } from '../../constants/theme';
 import { Text } from '../common';
 
 const HeaderContainer = styled.View`
   width: 100%;
-  height: 95px;
   align-items: center;
-  flex-direction: column-reverse;
 `;
 
 const TitleContainer = styled.View`
@@ -24,15 +22,34 @@ const SubTitle = styled(Text)`
   color: ${defaultDarkGreyColor};
   font-size: 16px;
   margin-bottom: 3px;
+  text-transform: uppercase;
 `;
 
-const WorkspaceHeader = _ => (
-  <HeaderContainer>
-    <TitleContainer>
-      <Title>todos</Title>
-      <SubTitle>PRO</SubTitle>
-    </TitleContainer>
-  </HeaderContainer>
-);
+const InputField = styled.TextInput`
+  width: 80%;
+  height: 40px;
+  font-size: 20px;
+  border-bottom-width: 0.5px;
+  ${({ center }) => center && 'text-align: center;'}
+`;
+
+const WorkspaceHeader = _ => {
+  const [textInput, setTextInput] = useState('');
+
+  return (
+    <HeaderContainer>
+      <TitleContainer>
+        <Title>todos</Title>
+        <SubTitle>pro</SubTitle>
+      </TitleContainer>
+      <InputField
+        value={textInput}
+        onChangeText={setTextInput}
+        placeholder="Add a new to-do"
+        center={textInput === ''}
+      />
+    </HeaderContainer>
+  );
+};
 
 export default WorkspaceHeader;

@@ -6,7 +6,7 @@ import { defaultGreyColor } from '../../constants/theme';
 const Workspace = styled.View`
   flex: 1;
   background-color: ${defaultGreyColor};
-  padding: 0 20px;
+  padding: 20px 20px 0 20px;
   align-items: center;
 `;
 
