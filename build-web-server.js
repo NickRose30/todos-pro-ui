@@ -28,6 +28,6 @@ app.get('*', (req, res) => {
 
 app.listen(port, _ => {
   console.log(
-    `Listening on http://localhost:${port} :: proxy -> ${serverHost}`
+    `🚀 Listening on http://localhost:${port} :: proxy -> ${serverHost}`
   );
 });

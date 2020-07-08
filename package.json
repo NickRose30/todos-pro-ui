@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./ --fix",
-    "web": "yarn workspace web build && node build-server.js",
+    "web": "yarn workspace web build && node build-web-server.js",
     "web:clean": "yarn workspace web clean",
     "web:build": "yarn workspace web build",
     "native": "yarn workspace native start",
