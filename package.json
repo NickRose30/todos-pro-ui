@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./ --fix",
-    "web": "yarn workspace web start",
+    "web": "yarn workspace web build && node build-server.js",
     "web:clean": "yarn workspace web clean",
     "web:build": "yarn workspace web build",
     "native": "yarn workspace native start",
@@ -21,6 +21,9 @@
   "private": true,
   "dependencies": {
     "@todos-pro/common": "1.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "http-proxy-middleware": "^1.0.4",
     "ramda": "^0.27.0",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
