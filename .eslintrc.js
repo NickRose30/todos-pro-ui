@@ -32,5 +32,6 @@ module.exports = {
     'react/no-array-index-key': 0,
     'comma-dangle': 0,
     'no-confusing-arrow': 0,
+    'function-paren-newline': 0,
   },
 };
