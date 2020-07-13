@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components/native';
+import { useStore, actions } from '@todos-pro/common';
 import { Text } from '../common';
+import { TODO_TYPES } from '../../constants/todoTypes';
 
 const HeaderContainer = styled.View`
   width: 100%;
@@ -37,7 +39,25 @@ const InputField = styled.TextInput`
 `;
 
 const WorkspaceHeader = ({ pageName }) => {
+  const { dispatch } = useStore();
   const [textInput, setTextInput] = useState('');
+  const inputRef = useRef(null);
+
+  const clearInput = _ => {
+    inputRef.current.clear();
+    setTextInput('');
+  };
+
+  const addNewTodo = async ({ nativeEvent }) => {
+    const { text } = nativeEvent;
+    dispatch(
+      actions.addNewTodo({
+        text,
+        type: TODO_TYPES[pageName],
+      })
+    );
+    clearInput();
+  };
 
   return (
     <HeaderContainer>
@@ -46,10 +66,14 @@ const WorkspaceHeader = ({ pageName }) => {
         <SubTitle>pro</SubTitle>
       </TitleContainer>
       <InputField
+        ref={inputRef}
         value={textInput}
         onChangeText={setTextInput}
         placeholder="Add a new to-do"
         center={textInput === ''}
+        autoCapitalize="sentences"
+        clearButtonMode="while-editing"
+        onSubmitEditing={addNewTodo}
       />
       <PageName>{pageName}</PageName>
     </HeaderContainer>

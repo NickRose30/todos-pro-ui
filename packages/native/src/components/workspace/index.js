@@ -9,7 +9,7 @@ import TodoItem from '../todo-item';
 const Container = styled.View`
   flex: 1;
   background-color: ${defaultGreyColor};
-  padding: 20px;
+  padding: 20px 20px 0 20px;
 `;
 
 const Workspace = ({ route, todos }) => (
@@ -18,7 +18,7 @@ const Workspace = ({ route, todos }) => (
     <FlatList
       data={todos}
       renderItem={({ item }) => <TodoItem todo={item} />}
-      keyExtractor={R.prop('id')}
+      keyExtractor={R.prop('_id')}
     />
   </Container>
 );

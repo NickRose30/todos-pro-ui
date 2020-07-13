@@ -1,6 +1,10 @@
 import React from 'react';
-import Root from './src';
+import Root, { TodosProvider } from './src';
 
-const App = _ => <Root />;
+const App = _ => (
+  <TodosProvider>
+    <Root />
+  </TodosProvider>
+);
 
 export default App;

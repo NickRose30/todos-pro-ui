@@ -22,7 +22,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 1,
     'no-unused-vars': [2, { argsIgnorePattern: '_' }],
     'arrow-parens': 0,
-    'no-use-before-define': 1,
+    'no-use-before-define': 0,
     'import/prefer-default-export': 0,
     'implicit-arrow-linebreak': 0,
     'react/jsx-curly-newline': 0,
