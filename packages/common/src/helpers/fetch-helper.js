@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { getEnvBasedProxyUrl } from './proxy';
 
 const getAxiosConfig = config => ({
-  baseURL: 'http://localhost:8088',
+  baseURL: getEnvBasedProxyUrl(),
   method: 'GET',
   ...config,
 });

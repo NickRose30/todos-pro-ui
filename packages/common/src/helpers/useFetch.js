@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { getEnvBasedProxyUrl } from './proxy';
 
 const getAxiosConfig = config => ({
-  baseURL: 'http://localhost:8088',
+  baseURL: getEnvBasedProxyUrl(),
   method: 'GET',
   ...config,
 });
@@ -19,6 +20,7 @@ export default (config, dependencies = []) => {
         const response = await axios(axiosConfig);
         setData(response);
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.log(e);
       } finally {
         setFetching(false);
