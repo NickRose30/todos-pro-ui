@@ -1,6 +1,11 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { useStore, actions } from '@todos-pro/common';
+import {
+  FontAwesome,
+  MaterialCommunityIcons,
+  Ionicons,
+} from '@expo/vector-icons';
 import { Text } from '../common';
 import { statuses } from '../../constants/statuses';
 
@@ -21,18 +26,23 @@ const LeftView = styled.View`
   align-items: center;
 `;
 
+const CompletenessIcon = styled.View`
+  width: 32px;
+  height: 24px;
+`;
+
 const Todo = ({ text, _id: id, status, type }) => {
   const { dispatch } = useStore();
+  const isCompleted = status === statuses.COMPLETE;
 
   const deleteTodo = _ => {
     dispatch(actions.deleteTodo(id));
   };
 
   const toggleCompleteness = _ => {
-    // eslint-disable-next-line prettier/prettier
-    const newStatus = status === statuses.COMPLETE
-        ? statuses.INCOMPLETE
-        : statuses.COMPLETE;
+    const newStatus = isCompleted
+      ? statuses.INCOMPLETE
+      : statuses.COMPLETE;
     const newTodo = {
       text,
       id,
@@ -45,13 +55,31 @@ const Todo = ({ text, _id: id, status, type }) => {
   return (
     <Container>
       <LeftView>
-        <Text onPress={toggleCompleteness}>Done?</Text>
-        <TodoText complete={status === statuses.COMPLETE}>
-          {text}
-        </TodoText>
+        <CompletenessIcon>
+          {isCompleted ? (
+            <Ionicons
+              name="ios-checkmark-circle"
+              size={25}
+              color="green"
+              onPress={toggleCompleteness}
+            />
+          ) : (
+            <MaterialCommunityIcons
+              name="checkbox-blank-circle-outline"
+              size={24}
+              color="grey"
+              onPress={toggleCompleteness}
+            />
+          )}
+        </CompletenessIcon>
+        <TodoText complete={isCompleted}>{text}</TodoText>
       </LeftView>
-
-      <Text onPress={deleteTodo}>X</Text>
+      <FontAwesome
+        name="trash-o"
+        size={24}
+        color="red"
+        onPress={deleteTodo}
+      />
     </Container>
   );
 };

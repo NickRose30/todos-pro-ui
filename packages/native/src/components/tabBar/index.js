@@ -2,11 +2,22 @@ import React from 'react';
 import * as R from 'ramda';
 import styled from 'styled-components/native';
 import {
+  FontAwesome5,
+  AntDesign,
+} from '@expo/vector-icons';
+import {
   defaultGreyColor,
   activeGreyColor,
   whiteColor,
+  clipboardBrownColor,
+  defaultDarkGreyColor,
+  reactLightBlueColor,
+  orangeColor,
 } from '../../constants/theme';
 import { Text } from '../common';
+
+const getColorIfActive = active => color =>
+  active ? color : defaultDarkGreyColor;
 
 const Container = styled.View`
   flex-direction: row;
@@ -25,6 +36,39 @@ const TabLabel = styled(Text)`
   ${({ active }) => !active && `color: ${whiteColor};`};
   margin: auto;
 `;
+
+const getTabIcon = (page, active) => {
+  const getPageColor = getColorIfActive(active);
+  switch (page) {
+    case 'General':
+      return (
+        <FontAwesome5
+          name="clipboard-list"
+          size={24}
+          color={getPageColor(clipboardBrownColor)}
+        />
+      );
+    case 'Work':
+      return (
+        <FontAwesome5
+          name="react"
+          size={24}
+          color={getPageColor(reactLightBlueColor)}
+        />
+      );
+    case 'To Purchase':
+      return (
+        <AntDesign
+          name="shoppingcart"
+          size={24}
+          color={getPageColor(orangeColor)}
+        />
+      );
+
+    default:
+      return <React.Fragment />;
+  }
+};
 
 const TabBar = ({ state, descriptors, navigation }) => {
   const routeIndex = R.prop('index', state);
@@ -85,7 +129,9 @@ const TabBar = ({ state, descriptors, navigation }) => {
             active={isFocused}
             key={key}
           >
-            <TabLabel active={isFocused}>{label}</TabLabel>
+            <TabLabel active={isFocused}>
+              {getTabIcon(label, isFocused)}
+            </TabLabel>
           </Tab>
         );
       })}
