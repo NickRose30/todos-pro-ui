@@ -12,3 +12,6 @@ export const clipboardBrownColor = '#82553b';
 
 // fonts
 export const themeFont = 'Montserrat';
+
+// misc
+export const defaultFontSize = '18px';

@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 import { useStore, actions } from '@todos-pro/common';
 import { Text } from '../common';
 import { TODO_TYPES } from '../../constants/todoTypes';
+import { defaultDarkGreyColor } from '../../constants/theme';
 
 const HeaderContainer = styled.View`
   width: 100%;
@@ -36,6 +37,7 @@ const InputField = styled.TextInput`
   font-size: 20px;
   border-bottom-width: 0.5px;
   ${({ center }) => center && 'text-align: center;'}
+  color: ${defaultDarkGreyColor};
 `;
 
 const WorkspaceHeader = ({ pageName }) => {
