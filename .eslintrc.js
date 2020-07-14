@@ -5,7 +5,11 @@ module.exports = {
     es2020: true,
   },
   plugins: ['react', 'prettier', 'react-hooks'],
-  extends: ['plugin:react/recommended', 'airbnb'],
+  extends: [
+    'plugin:react/recommended',
+    'plugin:prettier/recommended',
+    'airbnb',
+  ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -33,5 +37,7 @@ module.exports = {
     'comma-dangle': 0,
     'no-confusing-arrow': 0,
     'function-paren-newline': 0,
+    indent: 0,
+    'object-curly-newline': 0,
   },
 };

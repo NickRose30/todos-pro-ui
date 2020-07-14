@@ -17,7 +17,7 @@ const Workspace = ({ route, todos }) => (
     <WorkspaceHeader pageName={route.name} />
     <FlatList
       data={todos}
-      renderItem={({ item }) => <TodoItem todo={item} />}
+      renderItem={({ item }) => <TodoItem {...item} />}
       keyExtractor={R.prop('_id')}
     />
   </Container>

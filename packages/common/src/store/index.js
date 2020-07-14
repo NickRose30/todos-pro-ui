@@ -8,6 +8,7 @@ const fetchAllTodos = _ => async dispatch => {
     });
     dispatch(actions.setTodos(data));
   } catch (e) {
+    // eslint-disable-next-line no-console
     console.log(e);
   }
 };
@@ -24,6 +25,35 @@ const addNewTodo = ({ text, type }) => async dispatch => {
     });
     dispatch(actions.fetchAllTodos());
   } catch (e) {
+    // eslint-disable-next-line no-console
+    console.log(e);
+  }
+};
+
+const deleteTodo = id => async dispatch => {
+  try {
+    await fetchHelper({
+      method: 'DELETE',
+      url: `/v1/todos/${id}`,
+    });
+    dispatch(actions.fetchAllTodos());
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.log(e);
+  }
+};
+
+const editTodo = todo => async dispatch => {
+  const { id, ...newTodo } = todo;
+  try {
+    await fetchHelper({
+      method: 'PUT',
+      url: `/v1/todos/${id}`,
+      data: newTodo,
+    });
+    dispatch(actions.fetchAllTodos());
+  } catch (e) {
+    // eslint-disable-next-line no-console
     console.log(e);
   }
 };
@@ -39,6 +69,8 @@ export const actions = {
   }),
   fetchAllTodos,
   addNewTodo,
+  deleteTodo,
+  editTodo,
 };
 
 export const reducer = (state, action) => {
