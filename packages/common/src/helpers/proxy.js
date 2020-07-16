@@ -3,12 +3,7 @@ const PRODUCTION_BASE_URL =
 const LOCAL_BASE_URL = 'http://localhost:8088';
 
 export const getEnvBasedProxyUrl = _ => {
-  switch (process.env.NODE_ENV) {
-    case 'development':
-      return LOCAL_BASE_URL;
-    case 'production':
-      return PRODUCTION_BASE_URL;
-    default:
-      return LOCAL_BASE_URL;
-  }
+  // eslint-disable-next-line no-undef
+  if (__DEV__) return LOCAL_BASE_URL;
+  return PRODUCTION_BASE_URL;
 };
